@@ -20,7 +20,7 @@
 
 ### The setup
 
-I have a small studio that ships software end-to-end for SMBs around the Pacific — local driving school, a media page, a dev studio brand, a community page, a marketing-test page. Each one has its own voice. Each one has a different posting cadence. Each one has its own list of competitor names that must never appear in copy.
+I have a small studio that ships software end-to-end for SMBs around the Pacific — a local service business, a media page, a dev studio brand, a community page, a marketing-test page. Each one has its own voice. Each one has a different posting cadence. Each one has its own list of competitor names that must never appear in copy.
 
 When I started letting an agent draft and publish posts directly, four failure modes hit me in the first month:
 
@@ -121,7 +121,7 @@ Founder, TNZ Lab
 - **Companion graphic**: optional 1080x1080 image with the 4 fails as bullet points. Use Atelier 687's brand palette, not a generic stock graphic.
 - **Reposting**: re-share on FB / Insta only AFTER LinkedIn engagement settles (per linkedin-launch-2026-05-01.md — anonymity rule).
 - **CRITICAL — laws verified**:
-  - No mention of Konduir / Konduir Pro / Konduir Code / driving-school SaaS anywhere in this draft. Verified by ctrl-F.
+  - No mention of the secret-commercial driving-school SaaS anywhere in this post body. Verified.
   - No mention of AI / LLM / Claude in customer-facing posts on the test page (Atelier 687) when the demo runs.
   - "Anthony" alone in the FB cold lane is irrelevant here — LinkedIn explicitly allows full identity.
   - No fake testimonials.
