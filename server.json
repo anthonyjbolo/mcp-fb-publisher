@@ -1,0 +1,71 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.anthonyjbolo/mcp-fb-publisher",
+  "title": "Facebook Publisher",
+  "description": "MCP server for safely publishing posts to multiple Facebook Pages with brand-voice config, banned-topic blocklists, image-required enforcement, and anti-duplication checks.",
+  "version": "0.1.0",
+  "websiteUrl": "https://github.com/anthonyjbolo/mcp-fb-publisher",
+  "repository": {
+    "url": "https://github.com/anthonyjbolo/mcp-fb-publisher",
+    "source": "github"
+  },
+  "packages": [
+    {
+      "registryType": "pypi",
+      "identifier": "mcp-fb-publisher",
+      "version": "0.1.0",
+      "transport": {
+        "type": "stdio"
+      },
+      "runtimeHint": "uvx",
+      "environmentVariables": [
+        {
+          "name": "META_USER_TOKEN",
+          "description": "Long-lived Meta Graph API user or page token. Required for publishing.",
+          "isRequired": true,
+          "isSecret": true
+        },
+        {
+          "name": "MCP_FB_PUBLISHER_CONFIG",
+          "description": "Absolute path to your config.yaml (per-page brand voices, banned topics, image policy).",
+          "isRequired": false,
+          "isSecret": false
+        },
+        {
+          "name": "MCP_FB_PUBLISHER_CONFIG_JSON",
+          "description": "Inline JSON config (alternative to file path, useful for serverless deploys).",
+          "isRequired": false,
+          "isSecret": false
+        },
+        {
+          "name": "OPENAI_API_KEY",
+          "description": "OpenAI API key for image generation via gpt-image-1 (optional).",
+          "isRequired": false,
+          "isSecret": true
+        },
+        {
+          "name": "FAL_KEY",
+          "description": "fal.ai API key for image generation via Flux Pro (optional).",
+          "isRequired": false,
+          "isSecret": true
+        }
+      ]
+    }
+  ],
+  "_meta": {
+    "io.modelcontextprotocol.registry/publisher-provided": {
+      "tags": [
+        "facebook",
+        "meta-graph-api",
+        "social-media",
+        "publishing",
+        "brand-voice",
+        "anti-duplication"
+      ],
+      "license": "MIT",
+      "documentationUrl": "https://github.com/anthonyjbolo/mcp-fb-publisher#readme",
+      "issueTrackerUrl": "https://github.com/anthonyjbolo/mcp-fb-publisher/issues",
+      "buildTags": ["BuiltOnClaudeCode"]
+    }
+  }
+}

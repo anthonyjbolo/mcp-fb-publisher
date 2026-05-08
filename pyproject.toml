@@ -1,0 +1,80 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "mcp-fb-publisher"
+version = "0.1.0"
+description = "MCP server for safely publishing posts to multiple Facebook Pages with brand-voice validation, anti-duplication and image-required guardrails."
+readme = "README.md"
+license = { text = "MIT" }
+authors = [
+    { name = "Anthony Bolo", email = "anthonyj.bolo@gmail.com" }
+]
+keywords = ["mcp", "model-context-protocol", "facebook", "meta-graph-api", "social-media", "publisher", "claude", "anthropic"]
+requires-python = ">=3.12"
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Communications",
+]
+dependencies = [
+    "mcp[cli]>=1.0.0",
+    "httpx>=0.27.0",
+    "pydantic>=2.6.0",
+    "pyyaml>=6.0",
+]
+
+[project.optional-dependencies]
+openai = ["openai>=1.40.0"]
+fal = ["fal-client>=0.4.0"]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-asyncio>=0.23.0",
+    "pytest-cov>=4.1.0",
+    "pytest-mock>=3.12.0",
+    "ruff>=0.5.0",
+    "mypy>=1.10.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/anthonyjbolo/mcp-fb-publisher"
+Repository = "https://github.com/anthonyjbolo/mcp-fb-publisher"
+Issues = "https://github.com/anthonyjbolo/mcp-fb-publisher/issues"
+
+[project.scripts]
+mcp-fb-publisher = "mcp_fb_publisher.server:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/mcp_fb_publisher"]
+
+[tool.ruff]
+line-length = 110
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "PL", "RUF"]
+ignore = ["PLR0913", "PLR2004", "PLR0912", "PLR0915", "PLW0603"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["PLC0415", "E501"]
+"src/mcp_fb_publisher/server.py" = ["E501", "PLC0415"]
+"src/mcp_fb_publisher/image_providers.py" = ["PLC0415"]
+"src/mcp_fb_publisher/meta_client.py" = ["E501"]
+"src/mcp_fb_publisher/validator.py" = ["E501"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+addopts = "-ra --strict-markers --cov=mcp_fb_publisher --cov-report=term-missing"
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "if __name__ == .__main__.:",
+    "raise NotImplementedError",
+]

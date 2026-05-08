@@ -1,0 +1,66 @@
+# mcp-fb-publisher — example config
+# Copy to `config.yaml` and edit. NEVER commit your real `config.yaml`
+# (it's already gitignored).
+#
+# This file is the single source of truth for:
+#   - which Facebook Pages this server is allowed to publish to
+#   - per-page brand voice (used by your LLM/agent layer; the server itself
+#     only enforces banned_topics + image_required + anti-duplicate)
+#   - banned_topics (substrings to reject in pre-publish validation)
+#   - image-provider preferences (OpenAI vs fal.ai)
+
+# ----------------------------- defaults -----------------------------
+# Defaults are merged into every page entry. Page-level fields override.
+defaults:
+  language: en
+  brand_voice: |
+    Direct, professional, no fluff. Avoid emojis unless the brand expects them.
+    Never mention AI, models, or LLMs in public-facing copy.
+  banned_topics: []           # substrings (case + accent insensitive)
+  white_keywords: []          # informational; not enforced by the server
+  image_required: true        # set to false if your brand allows text-only posts
+  anti_duplicate_lookback_days: 14
+
+# ----------------------------- pages -----------------------------
+# Add one entry per Facebook Page you want to publish to.
+# `page_id` is the numeric Meta Page ID (find via /me/accounts on Graph API).
+pages:
+  marketing_main:
+    page_id: "0000000000000000"
+    name: "My Brand — Main"
+    brand_voice: |
+      Confident, concise, customer-first. We announce, we don't beg.
+    banned_topics:
+      - competitor_brand_a
+      - leaked_internal_codename
+    image_required: true
+
+  ecommerce_promos:
+    page_id: "0000000000000001"
+    name: "My Brand — Promos"
+    brand_voice: |
+      Punchy product copy with clear CTA. Mention price + delivery clearly.
+    image_required: true
+    anti_duplicate_lookback_days: 7   # promos rotate faster than evergreen
+
+  community:
+    page_id: "0000000000000002"
+    name: "My Brand — Community"
+    brand_voice: |
+      Warm, human, story-driven. Reply tone is empathetic.
+    image_required: false   # community posts can be text-only
+    auto_reply_enabled: false
+
+# ----------------------------- image providers -----------------------------
+# Pick OpenAI (gpt-image-1) or fal.ai (flux-pro). Both return a public URL
+# that Meta Graph API can consume directly via /<page>/photos?url=...
+image_providers:
+  default: openai
+
+  openai:
+    model: gpt-image-1
+    size: 1024x1024
+
+  fal:
+    model: fal-ai/flux-pro/v1.1
+    image_size: square_hd
