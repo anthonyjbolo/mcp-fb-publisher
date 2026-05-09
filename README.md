@@ -1,5 +1,7 @@
 # mcp-fb-publisher
 
+<!-- mcp-name: io.github.anthonyjbolo/mcp-fb-publisher -->
+
 > An [MCP](https://modelcontextprotocol.io) server that lets Claude (or any MCP-compatible LLM) safely publish posts to **multiple Facebook Pages** through the Meta Graph API, with built-in guardrails: brand-voice config, banned-topic blocklists, image-required enforcement, and anti-duplication checks across recent feed posts.
 
 [![Tests](https://github.com/anthonyjbolo/mcp-fb-publisher/actions/workflows/ci.yml/badge.svg)](https://github.com/anthonyjbolo/mcp-fb-publisher/actions/workflows/ci.yml)

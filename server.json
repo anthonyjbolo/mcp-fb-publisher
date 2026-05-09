@@ -3,7 +3,7 @@
   "name": "io.github.anthonyjbolo/mcp-fb-publisher",
   "title": "Facebook Publisher",
   "description": "Safe Facebook Pages publishing with brand-voice, image-required & anti-duplication checks.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "websiteUrl": "https://github.com/anthonyjbolo/mcp-fb-publisher",
   "repository": {
     "url": "https://github.com/anthonyjbolo/mcp-fb-publisher",
@@ -13,7 +13,7 @@
     {
       "registryType": "pypi",
       "identifier": "mcp-fb-publisher",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "transport": {
         "type": "stdio"
       },
